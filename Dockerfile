@@ -48,6 +48,9 @@ RUN make menuselect.makeopts
 # Idea! 
 #         menuselect/menuselect --disable BUILD_NATIVE menuselect.makeopts
 # from: https://wiki.asterisk.org/wiki/display/AST/Building+and+Installing+Asterisk
+
+# Enable HEP modules
+RUN menuselect/menuselect --disable BUILD_NATIVE --enable res_hep --enable res_hep_pjsip --enable res_hep_rtcp menuselect.makeopts
 RUN sed -i "s/BUILD_NATIVE//" menuselect.makeopts
 # Continue with a standard make.
 RUN make 1> /dev/null
